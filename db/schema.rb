@@ -43,11 +43,17 @@ ActiveRecord::Schema.define(version: 2023_03_03_062615) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "prototypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "catch_copy", null: false
-    t.text "concept", null: false
-    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "catch_copy"
+    t.text "concept"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_prototypes_on_user_id"
@@ -56,10 +62,10 @@ ActiveRecord::Schema.define(version: 2023_03_03_062615) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
-    t.text "profile"
-    t.text "occupation"
-    t.text "position"
+    t.string "name", null: false
+    t.text "profile", null: false
+    t.text "occupation", null: false
+    t.text "position", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
